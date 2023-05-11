@@ -1,0 +1,270 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Layout from '../layouts/Layout.astro';
+
+const days = [
+  {
+    name: 'LOWER BODY',
+    circuits: [
+      {
+        workouts: [
+          {
+            name: 'HEX BAR DEADLIFTS',
+            reps: '15 reps'
+          },
+          {
+            name: 'FARMER WALKS',
+            reps: '20 m'
+          },
+          {
+            name: 'BIKE, JOG OR JUMP ROPE',
+            reps: '120 sec'
+          }
+        ]
+      },
+      {
+        workouts: [
+          {
+            name: 'WALKING LUNGES',
+            reps: '30 steps'
+          },
+          {
+            name: 'ROMANIAN DEADLIFTS',
+            reps: '15 reps'
+          },
+          {
+            name: 'OVERHEAD WALKING LUNGES',
+            reps: '20 m'
+          }
+        ]
+      },
+      {
+        workouts: [
+          {
+            name: 'BOX JUMPS',
+            reps: '15 reps'
+          },
+          {
+            name: 'STANDING CALF RAISES',
+            reps: '15 reps'
+          },
+          {
+            name: 'PLANKS',
+            reps: '60 sec'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'UPPER BODY',
+    circuits: [
+      {
+        workouts: [
+          {
+            name: 'RACK PULLS',
+            reps: '15 reps'
+          },
+          {
+            name: 'FLOOR PRESS',
+            reps: '15 reps'
+          },
+          {
+            name: 'JUMP ROPE*',
+            reps: '60 sec'
+          }
+        ]
+      },
+      {
+        workouts: [
+          {
+            name: 'INVERTED ROW',
+            reps: '15 reps'
+          },
+          {
+            name: 'LANDMINE PRESS',
+            reps: '15 reps'
+          },
+          {
+            name: 'PULL OVERS',
+            reps: '15 reps'
+          }
+        ]
+      },
+      {
+        workouts: [
+          {
+            name: 'AROUND THE WORLD',
+            reps: '10 (each way)'
+          },
+          {
+            name: 'BRADFORD PRESS',
+            reps: '15 reps'
+          },
+          {
+            name: 'ROLLOUTS',
+            reps: '15 reps'
+          }
+        ]
+      },
+    ]
+  },
+  {
+    name: 'LOWER BODY',
+    circuits: [
+      {
+        workouts: [
+          {
+            name: 'GOBLET SQUATS',
+            reps: '15 reps'
+          },
+          {
+            name: 'KETTLEBELL SWINGS*',
+            reps: '15 reps'
+          },
+          {
+            name: 'STEP UPS',
+            reps: '15 reps (each leg)'
+          }
+        ]
+      },
+      {
+        workouts: [
+          {
+            name: 'GLUTE HAM RAISE',
+            reps: '15 reps'
+          },
+          {
+            name: 'BULGARIAN SPLIT SQUATS',
+            reps: '15 reps (each leg)'
+          },
+          {
+            name: 'WALL SITS',
+            reps: '60 sec'
+          }
+        ]
+      },
+      {
+        workouts: [
+          {
+            name: 'SEATED CALF RAISE',
+            reps: '15 reps'
+          },
+          {
+            name: 'HANGING LEG RAISE',
+            reps: '15 reps'
+          },
+        ]
+      },
+    ]
+  },
+  {
+    name: 'UPPER BODY',
+    circuits: [
+      {
+        workouts: [
+          {
+            name: 'PENDLAY ROW',
+            reps: '15 reps'
+          },
+          {
+            name: 'FLAT BENCH PRESS',
+            reps: '15 reps'
+          },
+          {
+            name: 'BIKE, JOG OR JUMP ROPE',
+            reps: '60 sec'
+          }
+        ]
+      },
+      {
+        workouts: [
+          {
+            name: 'PRONE ROW',
+            reps: '15 reps'
+          },
+          {
+            name: 'PLYO PUSH UPS',
+            reps: '15 reps'
+          },
+          {
+            name: 'PUSH PRESS',
+            reps: '15 reps'
+          }
+        ]
+      },
+      {
+        workouts: [
+          {
+            name: 'WINDMILL PRESS',
+            reps: '15 reps (each side)'
+          },
+          {
+            name: 'RUSSIAN TWISTS',
+            reps: '15 reps (each side)'
+          },
+        ]
+      },
+      // {
+      //   workouts: [
+      //     {
+      //       name: '',
+      //       reps: ''
+      //     },
+      //     {
+      //       name: '',
+      //       reps: ''
+      //     },
+      //     {
+      //       name: '',
+      //       reps: ''
+      //     }
+      //   ]
+      // },
+    ]
+  }
+]
+---
+
+<Layout title='About'>
+  <Navbar />
+
+  <main>
+    <section class="dark:bg-gray-900">
+      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+          <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+              <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Endurance Workouts</h2>
+              <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Perform 3 rounds (sets) on each circuit. </p>
+              <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
+                <strong>Rest Times:</strong> 30 - 60 seconds between circuits and/or super sets.
+              </p>
+          </div>
+          
+          {days.map((day) => 
+           <div class="mb-8">
+            <h2 class="mb-4 text-center text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white">{day.name}</h2>
+               <div class="lg:grid lg:grid-cols-3">
+                {day.circuits.map((circuit, key) => 
+                  
+            <div class="flex flex-col p-6 mx-4 mb-4 lg:mb-0 text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                <h3 class="mb-4 text-2xl font-semibold">Circuit { key + 1 }</h3>
+                <!-- List -->
+                <ul role="list" class="mb-8 space-y-4 text-left">
+                  {circuit.workouts.map(workout => 
+                    
+                    <li class="flex items-center space-x-3">
+                        <!-- Icon -->
+                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        <span>{workout.name}: <span class="font-semibold">{workout.reps}</span></span>
+                    </li>
+                  )}
+                </ul>
+            </div>
+                )}
+              </div>
+            </div>
+            )}
+      </div>
+    </section>
+  </main>
+</Layout>
