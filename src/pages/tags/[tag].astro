@@ -5,19 +5,19 @@ import Layout from '../../layouts/Layout.astro';
 export async function getStaticPaths() {
   const allPosts = await Astro.glob('../posts/*.md');
 
-  return [
-    { params: { tag: "astro" }, props: {posts: allPosts} },
-    { params: { tag: "successes" }, props: {posts: allPosts} },
-    { params: { tag: "community" }, props: {posts: allPosts} },
-    { params: { tag: "blogging" }, props: {posts: allPosts} },
-    { params: { tag: "setbacks" }, props: {posts: allPosts} },
-    { params: { tag: "learning in public" }, props: {posts: allPosts} },
-  ];
+  const uniqueTags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) => post.frontmatter.tags.includes(tag));
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
 }
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
-const filteredPosts = posts.filter((post) => post.frontmatter.tags.includes(tag));
 ---
 <Layout title={tag ?? ''}>
   <main>
@@ -28,7 +28,7 @@ const filteredPosts = posts.filter((post) => post.frontmatter.tags.includes(tag)
     >
       <div class='mx-auto max-w-2xl lg:max-w-4xl'>
         <ol class='relative border-l border-gray-200 dark:border-gray-700'>
-            {filteredPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} date={post.frontmatter.pubDate.slice(0,10)} description={post.frontmatter.description} />)}
+            {posts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} date={post.frontmatter.pubDate.slice(0,10)} description={post.frontmatter.description} />)}
         </ol>
       </div>
     </section>
