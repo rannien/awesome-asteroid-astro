@@ -4,6 +4,11 @@ const { frontmatter } = Astro.props;
 ---
 <Layout title={`Blog / ${frontmatter.title}`}>
 <h1>{frontmatter.title}</h1>
+<div>
+    {frontmatter.tags.map((tag) => (
+      <span class="bg-blue-300 text-blue-800 text-xs font-medium mr-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300"><a href={`/tags/${tag}`}>{tag}</a></span>
+    ))}
+  </div>
 <p>Published on: {frontmatter.pubDate.slice(0,10)}</p>
 <p><em>{frontmatter.description}</em></p>
 <p>Written by {frontmatter.author}</p>
