@@ -194,17 +194,16 @@ const days = [
               </p>
           </div>
           
-          {days.map((day) => 
            <div class="mb-8">
-            <h2 class="mb-4 text-center text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white">{day.name}</h2>
+            <h2 class="mb-4 text-center text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white">1</h2>
                <div class="lg:grid lg:grid-cols-3">
-                {day.circuits.map((circuit, key) => 
+                {days.map((day) => 
                   
-            <div class="flex flex-col p-6 mx-4 mb-4 lg:mb-0 text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-                <h3 class="mb-4 text-2xl font-semibold">Circuit { key + 1 }</h3>
+            <div class="flex flex-col p-6 mx-4 mb-4 lg:mb-0 text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white gap-y-3">
+                <h3 class="mb-4 text-2xl font-semibold">{ day.name }</h3>
                 <!-- List -->
                 <ul role="list" class="mb-8 space-y-4 text-left">
-                  {circuit.workouts.map(workout => 
+                  {day.workouts.map(workout => 
                     
                     <li class="flex items-center space-x-3">
                         <!-- Icon -->
@@ -217,7 +216,6 @@ const days = [
                 )}
               </div>
             </div>
-            )}
       </div>
     </section>
   </main>
