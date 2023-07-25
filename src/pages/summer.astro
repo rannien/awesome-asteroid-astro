@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// 1-2 warmup sets
+
+const days = [
+  {
+    name: 'Day 1 - Chest and Back',
+    workouts: [
+      {
+        name: '',
+        reps: '15 reps',
+      },
+      {
+        name: '',
+        reps: '',
+      },
+      {
+        name: '',
+        reps: '',
+      },
+      {
+        name: '',
+        reps: '',
+      },
+    ],
+  },
+  {
+    name: 'Day 2 - Legs',
+    workouts: [
+      {
+        name: 'Leg Extensions',
+        reps: '3 sets x 10 reps',
+      },
+      {
+        name: 'Squats',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Bulgarian Split Squats',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Standing Calf Raise',
+        reps: '3 sets x 10 reps',
+      },
+      {
+        name: 'Leg Raise',
+        reps: '3 sets x 10 reps',
+      },
+    ],
+  },
+  {
+    name: 'Day 3 - Shoulders and Arms',
+    workouts: [
+      {
+        name: 'Lateral Raise',
+        reps: '3 sets x 10 reps',
+      },
+      {
+        name: 'Overhead Press',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Bent Over Reverse Fly',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Skull Crusher',
+        reps: '3 sets x 10 reps',
+      },
+      {
+        name: 'Cross Bench Dips',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Barbell Curl',
+        reps: '3 sets x 10 reps',
+      },
+      {
+        name: 'Barbell Curl',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Finger Curl',
+        reps: '3 sets x 8 reps',
+      },
+    ],
+  },
+  {
+    name: 'Day 4 - Chest and Back',
+    workouts: [
+      {
+        name: 'Bench Press',
+        reps: '3 sets x 6 reps',
+      },
+      {
+        name: 'Incline Flys',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Weighted Dips',
+        reps: '3 sets x 6 reps',
+      },
+      {
+        name: 'Weighted Pull-ups',
+        reps: '3 sets x 6 reps',
+      },
+      {
+        name: 'Straight Arm Pull-downs',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Deadlifts',
+        reps: '3 sets x 6 reps',
+      },
+    ],
+  },
+  {
+    name: 'Day 5 - Legs',
+    workouts: [
+      {
+        name: 'Squats',
+        reps: '3 sets x 6 reps',
+      },
+      {
+        name: 'Romanian Deadlifts',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Split Squats',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Standing Calf Raise',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Weighted Crunches',
+        reps: '3 sets x 10 reps',
+      },
+    ],
+  },  
+  {
+    name: 'Day 6 - Shoulders and Arms',
+    workouts: [
+      {
+        name: 'Uprigth Rows',
+        reps: '3 sets x 6 reps',
+      },
+      {
+        name: 'Unilateral Cable Reverse Fly',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Unilateral Cable Lateral Raise',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Cable Triceps Extension',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Cross Bench Dips',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Lying Dumbbell Curls',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Concentration Curls',
+        reps: '3 sets x 8 reps',
+      },
+      {
+        name: 'Barbell Forearm Extensions',
+        reps: '3 sets x 8 reps',
+      },
+    ],
+  },
+];
+
+---
+
+<Layout title='About'>
+  <main>
+    <section class="dark:bg-gray-900">
+      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+          <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+              <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Endurance Workouts</h2>
+              <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Perform 3 rounds (sets) on each circuit. </p>
+              <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
+                <strong>Rest Times:</strong> 30 - 60 seconds between circuits and/or super sets.
+              </p>
+          </div>
+          
+          {days.map((day) => 
+           <div class="mb-8">
+            <h2 class="mb-4 text-center text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white">{day.name}</h2>
+               <div class="lg:grid lg:grid-cols-3">
+                {day.circuits.map((circuit, key) => 
+                  
+            <div class="flex flex-col p-6 mx-4 mb-4 lg:mb-0 text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                <h3 class="mb-4 text-2xl font-semibold">Circuit { key + 1 }</h3>
+                <!-- List -->
+                <ul role="list" class="mb-8 space-y-4 text-left">
+                  {circuit.workouts.map(workout => 
+                    
+                    <li class="flex items-center space-x-3">
+                        <!-- Icon -->
+                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        <span>{workout.name}: <span class="font-semibold">{workout.reps}</span></span>
+                    </li>
+                  )}
+                </ul>
+            </div>
+                )}
+              </div>
+            </div>
+            )}
+      </div>
+    </section>
+  </main>
+</Layout>
